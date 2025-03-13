@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Hệ thống quản trị tài liệu hành chính" />
+    <title>Trang chủ</title>
+    <link rel="stylesheet" href="styles/header.css" />
+    <link rel="stylesheet" href="styles/sidebar.css" />
+    <link rel="stylesheet" href="styles/common.css" />
+    <link rel="stylesheet" href="styles/footer.css" />
+
+    <!-- CSS động cho từng trang sẽ được thêm vào đây -->
+    <link id="page-specific-css" rel="stylesheet" href="" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- Header sẽ được nạp vào đây -->
+    <div id="header-container" class="header"></div>
+
+    <div class="main-content">
+        <!-- Nạp sidebar -->
+        <div id="sidebar-container" class="sidebar"></div>
+
+        
+        <div class="content">
+            <div id="page-content" class="page-content">
+                <!-- Nạp nội dung trang -->
+                <div class="loading">Đang tải...</div>
+            </div>
+
+            <!-- Nạp footer -->
+            <div id="footer-container" class="footer"></div>
+        </div>
+    </div>
+
+    <script src="js/components.js"></script>
+    <script src="js/router.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // loadComponent("header-container", "/components/header.html");
+            // loadComponent("sidebar-container", "/components/sidebar.html");
+            // loadComponent("footer-container", "/components/footer.html");
+            
+            $("#header-container").load("components/header.html");
+            $("#sidebar-container").load("components/sidebar.html");
+            $("#footer-container").load("components/footer.html");
+            
+            initRouter();
+        });
+    </script>
+</body>
+
+</html>

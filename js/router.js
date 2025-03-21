@@ -17,12 +17,12 @@ function initRouter() {
     }
     
     // Đăng ký sự kiện cho các liên kết sidebar
-    document.addEventListener('click', function(e) {
+    document.addEventListener("click", function(e) {
         // Tìm thẻ a gần nhất có thuộc tính data-page
-        const link = e.target.closest('.sidebar a[data-page]');
+        const link = e.target.closest(".sidebar a[data-page]");
         if (link) {
             e.preventDefault();
-            const pageId = link.getAttribute('data-page');
+            const pageId = link.getAttribute("data-page");
             navigateTo(pageId);
         }
     });
@@ -63,13 +63,13 @@ async function loadPage(pageId, updateMenu = true) {
         // Tìm và đánh dấu active cho menu tương ứng dựa vào data-page
         const activeLink = document.querySelector(`.sidebar a[data-page="${pageId}"]`);
         if (activeLink) {
-            activeLink.closest('li').classList.add("active");
+            activeLink.closest("li").classList.add("active");
         }
     }
     
     try {
         // Xác định đường dẫn đến file HTML tương ứng
-        const baseApiPath = '/PROJECT/pages/';
+        const baseApiPath = "pages/";
         let pagePath;
         
         switch(pageId) {
@@ -122,7 +122,7 @@ async function loadPage(pageId, updateMenu = true) {
             <div class="error-container">
                 <h2>Không thể tải trang</h2>
                 <p>${error.message}</p>
-                <button onclick="navigateTo('home')">Quay về trang chủ</button>
+                <button onclick="navigateTo("home")">Quay về trang chủ</button>
             </div>
         `;
     }
@@ -153,10 +153,10 @@ function loadPageCSS(pageId) {
     
     switch(pageId) {
         case "utilities":
-            cssPath = "/pages/utilities/register_project.css";
+            cssPath = "pages/utilities/register_project.css";
             break;
         default:
-            cssPath = `/pages/${pageId}/${pageId}.css`;
+            cssPath = `pages/${pageId}/${pageId}.css`;
     }
     
     // Kiểm tra và xoá link CSS cũ
@@ -175,26 +175,26 @@ function loadPageCSS(pageId) {
 
 function getPageTitle(pageId) {
     switch (pageId) {
-        case "home": return "Trang chủ - Hệ thống quản trị";
-        case "news": return "Tin tức - Hệ thống quản trị";
-        case "notifications": return "Thông báo - Hệ thống quản trị";
-        case "utilities": return "Tiện ích - Hệ thống quản trị";
-        case "profile": return "Thông tin cá nhân - Hệ thống quản trị";
-        case "settings": return "Cài đặt - Hệ thống quản trị";
+        case "home": return "Trang chủ";
+        case "news": return "Tin tức";
+        case "notifications": return "Thông báo";
+        case "utilities": return "Tiện ích";
+        case "profile": return "Thông tin cá nhân";
+        case "settings": return "Cài đặt";
         default: return "Hệ thống quản trị tài liệu hành chính";
     }
 }
 
 function getPageUrl(pageId) {
-    const baseUrl = window.location.origin + '/PROJECT/';
+    const baseUrl = window.location.origin + window.location.pathname.split('index.html')[0];
     
     switch (pageId) {
         case "home": return baseUrl;
-        case "news": return baseUrl + "news.html";
-        case "notifications": return baseUrl + "notifications.html";
-        case "utilities": return baseUrl + "utilities/register_project.html";
-        case "profile": return baseUrl + "profile.html";
-        case "settings": return baseUrl + "settings.html";
+        case "news": return baseUrl + "pages/news/news.html";
+        case "notifications": return baseUrl + "pages/notifications/notifications.html";
+        case "utilities": return baseUrl + "pages/utilities/register_project.html";
+        case "profile": return baseUrl + "pages/profile/profile.html";
+        case "settings": return baseUrl + "pages/settings/settings.html";
         default: return baseUrl;
     }
 }

@@ -1,4 +1,4 @@
-.sidebar {
+.side-bar {
     flex-shrink: 0;
     box-sizing: border-box;
     width: 250px;
@@ -14,7 +14,7 @@
     z-index: 101;
 }
 
-.sidebar ul li.active a {
+.side-bar ul li.active a {
     background-color: var(--second-color);
     span {
         color: var(--main-color);
@@ -24,29 +24,128 @@
     }
 }
 
-.sidebar a, .sidebar svg {
+
+.side-bar a, .side-bar .dropdown-button, .side-bar svg {
     display: flex;
     padding: 0.5rem;
     align-items: center;
     gap: 0.2rem;
+    text-decoration: none;
+    color: var(--second-color);
+    transition: background-color 0.3s;
+}
 
+
+/* .side-bar a, .side-bar .dropdown-button {
+    padding: 0.5rem;
+    text-decoration: none;
+    color: var(--second-color);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    
+} */
+
+.dropdown-button {
+    font-family: SF Pro;
+    font-size: 1rem;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.side-bar a span, .side-bar .dropdown-button span {
+    flex-grow: 1;
+}
+
+.side-bar a:hover, .side-bar .dropdown-button:hover {
+    background-color: rgb(216, 80, 80)
+}
+
+.side-bar .sub-menu {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: 300ms ease-in-out;
+
+    >div {
+        overflow: hidden;
+    }
+}
+
+.side-bar .sub-menu.show {
+    grid-template-rows: 1fr;
 }
 
 span {
     color: var(--second-color);
 }
 
-.sidebar ul {
+.side-bar ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
 
-.sidebar svg {
+.side-bar svg {
     flex-shrink: 0;
     fill: var(--second-color);
 }
 
-/* .sidebar a {
+.dropdown-button svg{
+    transition: 200ms ease;
+}
+
+.rotate svg:last-child {
+    rotate: 180deg;
+}
+
+.side-bar .sub-menu a {
+    padding-left: 2rem;
+}
+
+.side-bar .sub-menu a {
+    padding: 1.3rem 1.3rem;
+    padding-left: 3.2rem;
+}
+
+.collapse-sidebar-button {
+    position: absolute;
+    bottom: 2px;
+    left: 2px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--second-color);
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.collapse-sidebar-button:hover {
+    background-color: rgb(216, 80, 80);
+}
+
+/* .side-bar a {
     border-bottom: 1px solid var(--second-color);
 } */
+
+.side-bar.close {
+    width: 60px; 
+    transition: width 0.3s ease-in-out;
+}
+
+.side-bar.close span {
+    display: none; 
+}
+
+.side-bar.close .dropdown-button svg:last-child {
+    display: none; 
+}
+
+.side-bar {
+    transition: width 0.3s ease-in-out;
+    /* overflow: hidden; */
+    text-wrap: nowrap;
+}
